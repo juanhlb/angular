@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="academico">
+<head>
+	<title>Proyecto 1 - Complementaria I - Juan Leiva</title>
+	<link href="css/angular-material.min.css"  rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<!--se importa todas las librerias -->
+<script  src="js/angular.min.js"></script>
+<script  src="js/angular-animate.min.js"></script>
+<script  src="js/angular-aria.min.js"></script>
+<script  src="js/angular-messages.min.js"></script>
+<script  src="js/angular-material.min.js"></script>
+<script  src="js/svg-assets-cache.js"></script>
+<script  src="js/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+
+	<body>
+
+		<left><img src="img/logoSYE.png" width="220" height="130"  style="float: right; position: relative; padding-right: 80px;"></left>
+		<div align="center" style="color:green; position:relative;"><h1>Datos de Ingreso del Profesor</h1></div>
+		
+			<div ng-controller="AcademicoController as ac_control" class="letraAzul" style="margin-left:15%">
+				<div align="center" ng-repeat="data in ac_control.profesores" style="padding-top: 80px; width:500px;">
+					<img ng-src="{{data.img}}" width="400" height="300" class="imagenmarco">
+					<div class="datos">
+					<p><b>Ref:</b> {{data.ref}}</p>
+					<p><b>Apellidos:</b> {{data.apellido}}</p>
+					<p><b>Nombre:</b> {{data.nombre}}</p>
+					<p><b>Cédula::</b> {{data.cedula}}</p>
+					<p><b>Sexo:</b> {{data.sexo}}</p>
+					<p><b>Fecha de nacimiento:</b> {{data.nacimiento}}</p>
+					<p><b>RIF:</b> {{data.rif}}</p>
+					<p><b>Mail:</b> {{data.email1}}</p>
+					<p><b>Mail Alternativo:</b> {{x.email2}}</p>
+					<p><b>Telefono Celular:</b> {{data.cel}}</p>
+					<p><b>Telefono Habitacion:</b> {{data.tel1}}</p>
+					<p><b>Otro Telefono:</b> {{data.tel2}}</p>
+					<p><b>Web: </b> {{data.web}}</p>
+					</div>
+					<!--botones-->
+					<div  class="md-padding dialogdemoBasicUsage" id="popupContainer">
+			
+					  <div  class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" style="float:left;" >
+					 	 <md-button style="float:left; margin-top: 0px;"  class="md-primary md-raised md-button md-ink-ripple" ng-show="data.limpiar" onClick="limpiar()">Limpiar</md-button>
+					  
+						  <md-button style="float:left; margin-top: 0px;"  ng-show="data.guardar" class="md-primary md-raised" ng-click="showAlert($event)">
+						  Guardar						</md-button>			
+									
+						<md-button style="float:left; margin-top: 0px;"  class="md-primary md-raised md-button md-ink-ripple" ng-show="data.salir" onClick="window.close();">Salir</md-button><br><br>
+					  </div>
+					  
+				</div><hr>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,55 @@
+El proyecto debe tener los siguientes archivos:
+
+ Archivo #1: angular.min.js
+ Archivo #2: app.js
+ Archivo #3: index.html
+
+Los archivos angular.min.js y app.js deben estar en sus respectivas carpetas,
+respectando el MVC.
+
+1.- En el archivo app.js crear un módulo que se llame “Academico” y lo enlacen
+con la directiva correspondiente a la vista (index.html).
+
+2.- Se debe crear un arreglo en app.js que contenga lo siguiente datos:
+
+-Número de referencia, Foto del profesor, Apellidos, Nombres, Cedula de
+Identidad, Sexo, Fecha de Nacimiento, Nº de Rif, Dirección de email, Dirección.
+
+de email alternativa, Teléfono celular, Teléfono de habitación, Otro teléfono,
+Web.
+
+3.- Crear un controlador llamado “AcademicoController”, se debe enlazar con
+su vista con la directiva correspondiente.
+
+4.- Dentro de una etiqueta <div> se deben mostrar los datos a partir del arreglo
+creado en el paso dos (2).
+
+Datos que debe contener el arreglo:
+
+Número de referencia: P-2017-1, Foto del profesor, Apellidos: Pérez
+Ortega, Nombres: Juan Andrés, Ci: 18.269.370, Sexo: Masculino, Fecha de
+Nacimiento: 24/01/1960, Nº de Rif: V-18.269.370, Dirección de email:
+juan_perez@gmail.com, Dirección de email alternativa:
+juan_perez@yahoo.com, Teléfono celular: 0424-589-70-60, Teléfono de
+habitación: 0212-963-70-90, Otro teléfono: 0212-697-66-70, Web:
+www.juan_perez.com. Color de letra: azul oscuro.
+
+Número de referencia: P-2017-2, Foto del profesor, Apellidos: Romero,
+Nombres: Dianne Josefina, Ci: 12.269.370, Sexo: Femenino, Fecha de
+Nacimiento: 25/06/1955, Nº de Rif: V-12.269.370, Dirección de email:
+dianne_romero@gmail.com, Dirección de email alternativa:
+dianne_romero@yahoo.com, Teléfono celular: 0424-489-70-60, Teléfono de
+habitación: 0212-963-80-90, Otro teléfono: 0212-693-66-70, Web: No tiene.
+Color de letra: azul oscuro.
+
+5.- Usar la directiva para mostrar u ocultar un botón que diga “Guardar”, para
+usar esta directiva se debe agregar un booleano a el arreglo principal. Al
+presionar el botón debe mostrar el siguiente mensaje: “Los datos se han
+guardado con éxito…”.
+
+6.- Colocar una imagen y un título de encabezado a la información mostrada
+(ver la vista que se debe mostrar).7.- Colocar un botón para limpiar el formulario de ingreso. También debe usar
+la directiva para mostrar u ocultar el botón. Debe agregar también un booleano
+al arreglo.
+
+8.- Se debe mostrar un botón salir para cerrar el proyecto

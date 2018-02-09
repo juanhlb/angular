@@ -1,0 +1,34 @@
+	.letraAzul {
+		color : blue;
+	}
+
+	.letraAzul b{
+		color: black;
+		
+	}
+	
+	body{
+		background-color: #ffb3b3;
+	}
+	
+	.borde{
+		border-width: 5px;
+		border-color: Black;
+	}
+
+	li{
+		list-style-type: none;
+	}
+
+	button{
+		background-color: red; 
+	    border: none;
+	    color: white;
+	    padding: 15px 32px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 16px;
+	}
+
+	
