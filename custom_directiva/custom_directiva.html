@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  	<title>Tienda Online - productos</title>
+	<link rel='stylesheet prefetch' href='css/jquery.fullPage.css'>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/angular.js"></script>
+	<script src="JS/jquery.js"></script>
+  
+</head>
+
+<body ng-app="academico" ng-controller="AcademicoController">
+  
+
+	<div id="fullpage">
+	  <section class="vertical-scrolling" style="background: url('img/bg-2.jpg') no-repeat center / cover;">
+		<h2>Productos</h2>
+		<hr>
+
+		<form method="post" name="myform" id="myform" ng-submit="agregar()" >
+		
+	
+	
+	
+		
+				<div align="center" style="display:inline-block; width:35%;">
+					<p><label for="idprod">ID:</label>
+					<input name="idprod" id="idprod" type="text" ng-model="idprod" required  style="text-transform:uppercase;" maxlength="10" ></p>
+				
+					<p><label for="nombre">NOMBRE DE PRODUCTO:</label>
+					<input name="nombre" id="nombre" type="text" ng-model="nombre"  style="text-transform:uppercase;" required></p>
+				
+					<p><label for="descripcion">DESCRIPCION:</label>
+					<textarea id="descripcion" ng-model="descripcion" required></textarea></p>
+				
+					<p><label for="fecha">FECHA:</label>
+					<input id="fecha" type="date" ng-value="fecha" required></p>
+				
+					<p><label for="precio">PRECIO:</label>
+					<input type="number" id="precio" placeholder="0.00" ng-model="precio" step="any" required ></p>
+				
+					<p><label for="cantidad">CANTIDAD:</label>
+					<input id="cantidad" type="number" ng-model="cantidad" step="any" required ></p>
+					
+					<p><label for="imagen">IMAGEN:</label>
+					<input id="imagen" type="text" ng-model="imagen" required ></p>
+				</div>	
+				
+				<!--        div se muestra sólo en caso de Tarjeta de Crédito                      -->
+				<div ng-show="tarjcred" style="display:inline-block; width:35%;"> 
+							
+						<p><label for="banco">Banco:</label>
+                      <select id="banco" ng-model="banco" ng-options="obj.value as obj.label for obj in listabanco">
+					 </select></p>
+						
+						
+						<div id="visa_master" >
+							<fieldset style="    width: 40%;margin: 0 auto;">
+							<input type="radio" ng-model="tarjeta" value="visa" id="radio4" name="radio2"checked="checked"><label for="radio4">Visa</label>
+							<input type="radio" ng-model="tarjeta" value="mastercard" id="radio5" name="radio2"><label for="radio5">Master</label>
+							</fieldset>
+						</div>
+						
+
+						
+						
+						<p><label for="num_tarj" >Numero tarjeta:</label>
+						<input id="idprod" type="number" ng-model="num_tarj" size="10" /></p>
+					
+						<p><label for="mes">Mes:</label>
+						<input id="mes" type="number" ng-model="mes" max="12" min="1" size="2" /></p>
+						
+						<p><label for="ano">Año:</label>
+						<input id="ano" type="number" ng-model="ano" name="ano" min="1" max="9999" size="4" /></p>
+							
+						<p><label for="nombre_apellido">Nombre y apellido:</label>
+						<input id="nombre_apellido" type="text" ng-model="nombre_apellido" style="text-transform:uppercase;" maxlength="30" /></p>
+						
+						<p><label for="clave">Clave:</label>
+						<input id="clave" type="password" ng-model="clave" min="1" max="999" /></p>
+				</div>
+				
+				
+				<!--        Opciones  de pago     Efecivo, contado, crédito      -->		
+		 <div align="center" style="width: 100%;">
+		  	<fieldset>
+			
+			<input type="radio" id="radio1" ng-model="tipo_pago"  value="efectivo" name="radio" checked="checked" ng-click="tarjcred=false;tipo_pago='efectivo'"><label for="radio1">Efectivo</label>
+			<input type="radio" id="radio2" ng-model="tipo_pago" value="contado" name="radio" ng-click="tarjcred=false;tipo_pago='contado'"><label for="radio2">Contado</label>
+			<input type="radio" id="radio3" ng-model="tipo_pago"  value="credito" name="radio" ng-click="tarjcred=true;tipo_pago='credito'"><label for="radio3">Credito</label>
+			</fieldset>
+			</div>
+
+					
+					 <div align="center" style="width:100%; margin-top:5px;">
+						 <button id="agregar" type="submit" class="botoncol">Agregar</button>
+						 <button id="editar" type="button" ng-click="guardar_modificar()" class="botoncol"  ng-show="producto_sel!=-1">Editar</button>
+						 <button id="limpiar" type="reset" class="botoncol" ng-click="tarjcred=false">Limpiar</button>
+						 <button id="cerrar" type="button" ng-click="cerrar()" class="botoncol">Cerrar</button>
+					</div>
+		</form>
+	  </section>
+
+	  
+	  <!-- 				Segunda sección				 -->
+	  <section class="vertical-scrolling" style="background: url('img/bg-3.jpg') no-repeat center /cover;">
+	  
+		<div id="productos" style="height: 400px; overflow: auto;">
+		<table class='table'  id='tabla_productos' style="color:#eee;">
+		
+		<tr><th>#</th><th>Id</th><th>Nombre</th><th>Descripción</th><th>Imagen</th><th>Fecha</th><th>Precio</th><th>Cantidad</th> <th>Cantidad a Pagar</th><th>Forma de Pago</th><th>Acción</th></tr>
+	
+       <tablaproductos info="items[$index]" ng-repeat="d in items" ><tr id="{{$index+1}}" ng-hide="data.visible==false"  ng-mouseenter="enfila($index);" ng-click="editar($index);">
+	   </tr>
+	   </tablaproductos>
+	</table>
+		</div>
+		
+		<!--botones-->
+		 <div style="padding-top:50px;" align="center">
+						 <button id="borrar" ng-click="limpiar()" type="button" ng-disabled="items.length==0" class="botoncol">Borrar todos</button>
+		</div>
+	</div>	
+
+	  </section>
+	  
+	</div>
+	
+	<script  src="js/angular-locale_es-es.js"></script>
+	<script src='js/jquery.fullPage.min.js'></script>
+	<script src="js/angular_resource.js"></script>
+	<script  src="js/app.js"></script>
+</body>
+</html>
